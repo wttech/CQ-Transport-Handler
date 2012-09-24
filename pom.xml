@@ -18,18 +18,7 @@
 		<maven.compiler.version>1.6</maven.compiler.version>
 		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-		<sonar.host.url>http://192.168.25.222:9000</sonar.host.url>
-		<sonar.jdbc.url>jdbc:mysql://192.168.25.222:3306/sonar?useUnicode=true&amp;characterEncoding=utf8
-		</sonar.jdbc.url>
-		<sonar.jdbc.driver>com.mysql.jdbc.Driver</sonar.jdbc.driver>
-		<sonar.jdbc.username>sonar</sonar.jdbc.username>
-		<sonar.jdbc.password>s0nar</sonar.jdbc.password>
 	</properties>
-
-	<!-- <scm> <connection>scm:svn:https://svn.cognifide.com/sdi/trunk</connection> 
-		<developerConnection>scm:svn:https://svn.cognifide.com/sdi/trunk</developerConnection> 
-		<url>https://svn.cognifide.com/sdi/trunk</url> </scm> -->
 
 	<build>
 		<plugins>
@@ -137,12 +126,7 @@
 	</build>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.core</artifactId>
-			<version>4.2.0</version>
-			<scope>provided</scope>
-		</dependency>
+		<!-- osgi -->
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.compendium</artifactId>
@@ -154,16 +138,12 @@
 			<artifactId>org.apache.felix.scr.annotations</artifactId>
 			<version>1.5.0</version>
 		</dependency>
+
+		<!-- sling -->
 		<dependency>
 			<groupId>org.apache.sling</groupId>
 			<artifactId>org.apache.sling.api</artifactId>
 			<version>2.2.2</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jsp-api</artifactId>
-			<version>2.0</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.sling</groupId>
@@ -171,65 +151,39 @@
 			<version>2.0.6</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<!-- javax -->
 		<dependency>
-			<groupId>org.apache.jackrabbit</groupId>
-			<artifactId>jackrabbit-jcr2spi</artifactId>
-			<version>2.1.2</version>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.0</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<!-- logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.6.1</version>
 		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.6.1</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<artifactId>commons-logging</artifactId>
-			<groupId>commons-logging</groupId>
-			<version>1.1.1</version>
-			<scope>provided</scope>
-		</dependency>
+
+		<!-- commons -->
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>2.4</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.day.cq</groupId>
-			<artifactId>cq-commons</artifactId>
-			<version>5.4.6</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.day.cq.wcm</groupId>
-			<artifactId>cq-wcm-api</artifactId>
-			<version>5.4.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.day.cq.wcm</groupId>
-			<artifactId>cq-wcm-commons</artifactId>
-			<version>5.4.2</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.day.cq.wcm</groupId>
-			<artifactId>cq-wcm-commons</artifactId>
-			<version>5.4.2</version>
-			<scope>provided</scope>
-		</dependency>
+
+		<!-- cq -->
 		<dependency>
 			<groupId>com.day.cq</groupId>
 			<artifactId>cq-replication</artifactId>
 			<version>5.4.2</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<!-- tests -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -238,37 +192,17 @@
 		</dependency>
 	</dependencies>
 
-	<distributionManagement>
-		<repository>
-			<id>cognifide-internal-repository</id>
-			<name>Cognifide Internal Repository</name>
-			<url>http://nexus.cognifide.com/content/repositories/cognifide-internal</url>
-		</repository>
-	</distributionManagement>
-
 	<repositories>
 		<repository>
-			<id>cognifide-internal-repository</id>
-			<url>http://nexus.cognifide.com/content/repositories/cognifide-internal</url>
-		</repository>
-		<repository>
-			<id>cognifide-maven-repository</id>
-			<snapshots>
+			<id>adobe-public-releases</id>
+			<name>Adobe Public Repository</name>
+			<url>http://repo.adobe.com/nexus/content/groups/public</url>
+			<releases>
 				<enabled>true</enabled>
-			</snapshots>
-			<url>http://nexus.cognifide.com/content/groups/public</url>
+				<updatePolicy>never</updatePolicy>
+			</releases>
 		</repository>
 	</repositories>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>cognifide-maven-repository</id>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-			<url>http://nexus.cognifide.com/content/groups/public</url>
-		</pluginRepository>
-	</pluginRepositories>
 
 	<reporting>
 		<plugins>

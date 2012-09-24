@@ -37,3 +37,15 @@ What about multiple dispatchers per site?
 -----------------------------------------
 
 Because virtualhost is used to recognize site, we need some different mechanism to recognize dispatcher (assuming that there are many dispatchers-per-site on one server). You can use separate port numbers for each one (eg. 80 for the first one, 81 for the second, etc.)
+
+Commercial Support
+------------------
+
+Technical support can be made available if needed. Please [contact us](https://www.cognifide.com/get-in-touch/) for more details.
+
+We can:
+
+* prioritize your feature request,
+* tailor the product to your needs,
+* provide a training for your engineers,
+* support your development teams.
