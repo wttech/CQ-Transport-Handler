@@ -1,9 +1,9 @@
 package com.cognifide.cq.cogtransport;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.api.wrappers.ValueMapDecorator;
 
@@ -38,7 +38,9 @@ public class AgentConfigWrapper implements AgentConfig {
 
 	private void prepareProperties(String domainName, String mappedPath) {
 		ValueMap originalProperties = config.getProperties();
-		String[] headers = originalProperties.get(PROTOCOL_HTTP_HEADERS, DEFAULT_HTTP_HEADERS);
+		String[] originalHeaders = originalProperties.get(PROTOCOL_HTTP_HEADERS, DEFAULT_HTTP_HEADERS);
+		String[] headers = Arrays.copyOf(originalHeaders, originalHeaders.length);
+
 		for (int i = 0; i < headers.length; i++) {
 			headers[i] = headers[i].replace("{domain}", domainName);
 			if(mappedPath != null) {
