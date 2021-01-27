@@ -7,7 +7,7 @@
 	<version>0.1.2-SNAPSHOT</version>
 	<packaging>bundle</packaging>
 	<organization>
-		<name>Cognifide Polska Sp. z o. o.</name>
+		<name>Wunderman Thompson Technology</name>
 		<url>http://cognifide.com</url>
 	</organization>
 
@@ -58,7 +58,7 @@
 						<Export-Package>com.cognifide.cq.cogtransport.*</Export-Package>
 						<Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Name>${project.name}</Bundle-Name>
-						<Bundle-Vendor>Cognifide Ltd.</Bundle-Vendor>
+						<Bundle-Vendor>Wunderman Thompson Technology</Bundle-Vendor>
 						<Embed-Transitive>false</Embed-Transitive>
 					</instructions>
 				</configuration>

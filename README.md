@@ -1,16 +1,16 @@
-Cognifide Transport Handler
+CQ Transport Handler
 ===========================
 
 It's often desirable to use separate dispatcher directories to separate sites. Dispatcher directory `/docroot` can be assigned to the given virtualhost with `/virtualhosts` directive. It can be then specified in Apache virtualhost configuration with `DocumentRoot`. However, there is one problem: flush replication agent on publish which is responsible for refreshing replicated contents. Standard flush agent doesn't know anything about domain — all it's got is content path, so all invalidate request go to the same dispatcher.
 
 Of course you can configure one Flush Agent per domain, but if you have many domains it can be complicated. What's more, sometimes you might want to use more than one dispatcher per domain, so you have to configure NxM flush agents, where N is domain count, and M is dispatcher count.
 
-Cognifide Transport Handler is an solution to that problem.
+CQ Transport Handler is an solution to that problem.
 
 How does it work?
 ---------------------
 
-Flush agent uses so-called Transport Handler to connect to the given Transport URI. Transport Handler is an interface, implemented by a few OSGi services. Implementations are assigned to URI scheme (`http://`, `https://`, `zip://`, etc.) Cognifide Transport Handler works exactly like original HTTP transport handler (in fact it wraps HTTP transport handler) with one difference: it allows to use `{domain}` pattern in HTTP headers configuration. Cognifide Transport Handler has it's own URI scheme: `cog-http://` and `cog-https://`.
+Flush agent uses so-called Transport Handler to connect to the given Transport URI. Transport Handler is an interface, implemented by a few OSGi services. Implementations are assigned to URI scheme (`http://`, `https://`, `zip://`, etc.) CQ Transport Handler works exactly like original HTTP transport handler (in fact it wraps HTTP transport handler) with one difference: it allows to use `{domain}` pattern in HTTP headers configuration. CQ Transport Handler has it's own URI scheme: `cog-http://` and `cog-https://`.
 
 cog-transport is also able to use mapped (short) paths instead of the longer. Just use `{mappedPath}` placeholder.
 
@@ -31,7 +31,7 @@ Create dispatcher config (with separate `/docroot`) for each domain. Create Apac
 
 You can also set *Fallback mappings* and *Default domain* in the OSGi configuration. Please see above.
 
-IMPORTANT: After each change of the OSGi configuration or after updating Cognifide Transport Handler you have to edit Dispatcher Flush replication agent and save it (even without any change). Otherwise replication agent will be using old version of handler.
+IMPORTANT: After each change of the OSGi configuration or after updating CQ Transport Handler you have to edit Dispatcher Flush replication agent and save it (even without any change). Otherwise replication agent will be using old version of handler.
 
 What about multiple dispatchers per site?
 -----------------------------------------
